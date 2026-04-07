@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Lucky Deploy Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      width: 320px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #333;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #eee;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .info {
+      margin-top: 10px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🚀 部署成功</h1>
+  <p>你的静态网站已上线</p>
+
+  <button onclick="draw()">试试运气</button>
+
+  <div class="result" id="result"></div>
+
+  <div class="info" id="info"></div>
+</div>
+
+<script>
+  const results = [
+    "🎉 今天运气爆棚！",
+    "🙂 平平无奇的一天",
+    "⚠️ 小心点，今天不太顺",
+    "💰 有机会发财！",
+    "😴 适合摸鱼",
+  ];
+
+  function draw() {
+    const r = results[Math.floor(Math.random() * results.length)];
+    document.getElementById("result").innerText = r;
+  }
+
+  // 显示访问环境信息（方便你对比平台）
+  function showInfo() {
+    const info = `
+域名: ${location.hostname}
+协议: ${location.protocol}
+时间: ${new Date().toLocaleString()}
+用户代理: ${navigator.userAgent.substring(0, 40)}...
+    `;
+    document.getElementById("info").innerText = info;
+  }
+
+  showInfo();
+</script>
+
+</body>
+</html>
